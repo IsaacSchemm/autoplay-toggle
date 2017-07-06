@@ -15,16 +15,16 @@ AddonManager.addAddonListener({
 		if (addon.id == "autoplay-toggle@lakora.us") {
 			Components.classes["@mozilla.org/preferences-service;1"]
 				.getService(Components.interfaces.nsIPrefService)
-				.getBranch("media.navigator.permission.")
-				.setBoolPref("disabled", false);
+				.getBranch("media.autoplay.")
+				.setBoolPref("enabled", false);
 		}
 	},
 	onDisabling: function(addon) {
 		if (addon.id == "autoplay-toggle@lakora.us") {
 			Components.classes["@mozilla.org/preferences-service;1"]
 				.getService(Components.interfaces.nsIPrefService)
-				.getBranch("media.navigator.permission.")
-				.setBoolPref("disabled", false);
+				.getBranch("media.autoplay.")
+				.setBoolPref("enabled", false);
 		}
 	}
 });
@@ -74,7 +74,7 @@ AutoplayToggle.prototype = {
 						
 				this.prefBranch = Components.classes["@mozilla.org/preferences-service;1"]
 					.getService(Components.interfaces.nsIPrefService)
-					.getBranch("media.navigator.permission.");
+					.getBranch("media.autoplay.");
 				this.prefBranch.addObserver("", this, false);
 				break;
 			case "quit-application":
@@ -83,8 +83,8 @@ AutoplayToggle.prototype = {
 				// uninstalled.
 				Components.classes["@mozilla.org/preferences-service;1"]
 					.getService(Components.interfaces.nsIPrefService)
-					.getBranch("media.navigator.permission.")
-					.setBoolPref("disabled", false);
+					.getBranch("media.autoplay.")
+					.setBoolPref("enabled", false);
 				break;
 			case "nsPref:changed":
 				var strings = Components.classes["@mozilla.org/intl/stringbundle;1"]
@@ -95,7 +95,7 @@ AutoplayToggle.prototype = {
 				var title = strings.GetStringFromName("title");
 				var newValue = Components.classes["@mozilla.org/preferences-service;1"]
 					.getService(Components.interfaces.nsIPrefService)
-					.getBranch("media.navigator.permission.")
+					.getBranch("media.autoplay.")
 					.getBoolPref(aData);
 				
 				var message = strings.GetStringFromName(newValue ? "turnedOn" : "turnedOff");

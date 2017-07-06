@@ -6,7 +6,7 @@ var prefs = null;
 var observerObj = null;
 
 this.addEventListener("load", function () {
-	prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("media.navigator.permission.");
+	prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("media.autoplay.");
 	var toolbarbutton = document.getElementById("autoplay-toggle-ui-toggle-1");
 
 	observerObj = {
@@ -15,10 +15,10 @@ this.addEventListener("load", function () {
 				var newValue = aSubject.getBoolPref(aData);
 
 				if (newValue) {
-					toolbarbutton.label = toolbarbutton.tooltipText = AutoplayToggleButtons.GetString("overrideOn");
+					toolbarbutton.label = toolbarbutton.tooltipText = AutoplayToggleButtons.GetString("labelOn");
 					toolbarbutton.classList.add("setting-true");
 				} else {
-					toolbarbutton.label = toolbarbutton.tooltipText = AutoplayToggleButtons.GetString("overrideOff");
+					toolbarbutton.label = toolbarbutton.tooltipText = AutoplayToggleButtons.GetString("labelOff");
 					toolbarbutton.classList.remove("setting-true");
 				}
 			}
@@ -27,20 +27,20 @@ this.addEventListener("load", function () {
 	
 	prefs.addObserver("", observerObj, false);
 
-	var value = prefs.getBoolPref("disabled");
+	var value = prefs.getBoolPref("enabled");
 	if (value) {
-		toolbarbutton.label = toolbarbutton.tooltipText = AutoplayToggleButtons.GetString("overrideOn");
+		toolbarbutton.label = toolbarbutton.tooltipText = AutoplayToggleButtons.GetString("labelOn");
 		toolbarbutton.classList.add("setting-true");
+	} else {
+		toolbarbutton.label = toolbarbutton.tooltipText = AutoplayToggleButtons.GetString("labelOff");
 		
 		var r = Components.classes["@mozilla.org/preferences-service;1"]
 					.getService(Components.interfaces.nsIPrefService)
 					.getBranch("extensions.autoplay-toggle.")
 					.getBoolPref("reset-on-new-window");
 		if (r) {
-			prefs.setBoolPref("disabled", false);
+			prefs.setBoolPref("enabled", true);
 		}
-	} else {
-		toolbarbutton.label = toolbarbutton.tooltipText = AutoplayToggleButtons.GetString("overrideOff");
 	}
 });
 this.addEventListener("unload", function () {
@@ -68,11 +68,11 @@ AutoplayToggleButtons = {
 			if (addon.pendingOperations & (AddonManager.PENDING_DISABLE | AddonManager.PENDING_UNINSTALL)) {
 				promptService.alert(this.window, title, AutoplayToggleButtons.GetString("enableOrReinstallRequired"));
 			} else {
-				var actualValue = prefs.getBoolPref("disabled");
+				var actualValue = prefs.getBoolPref("enabled");
 				if (actualValue) {
-					prefs.setBoolPref("disabled", false);
+					prefs.setBoolPref("enabled", false);
 				} else if (promptService.confirm(this.window, title, AutoplayToggleButtons.GetString("confirmationPromptMessage"))) {
-					prefs.setBoolPref("disabled", true);
+					prefs.setBoolPref("enabled", true);
 				}
 			}
 		});
