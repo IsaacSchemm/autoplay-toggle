@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
-<!DOCTYPE webrtc-permissions-ui-toggle-prefs SYSTEM "chrome://webrtc-permissions-ui-toggle/locale/options.dtd">
+<!DOCTYPE autoplay-toggle-prefs SYSTEM "chrome://autoplay-toggle/locale/options.dtd">
 <vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <setting pref="extensions.autoplay-toggle.show-in-menu" type="bool" title="&showInMenu.label;"/>
   <setting pref="extensions.autoplay-toggle.notify-type" type="radio" title="&notifyType.label;">
   <radiogroup>
     <radio value="non-modal" label="&notifyType.nonModal.label;"/>
