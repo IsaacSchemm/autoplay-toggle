@@ -1,15 +1,15 @@
-component {265ba61d-8b89-4739-acc6-24df0bf7eb70} components/WebRTCToggle.js
-contract @webrtctoggle/startup;1 {265ba61d-8b89-4739-acc6-24df0bf7eb70}
-category profile-after-change WebRTCToggle @webrtctoggle/startup;1
+component {46836316-e11d-4142-b83b-c1e99755b6e2} components/AutoplayToggle.js
+contract @autoplaytoggle/startup;1 {46836316-e11d-4142-b83b-c1e99755b6e2}
+category profile-after-change AutoplayToggle @autoplaytoggle/startup;1
 
-content webrtc-permissions-ui-toggle chrome/content/
-style chrome://global/content/customizeToolbar.xul chrome://webrtc-permissions-ui-toggle/content/button.css
+content autoplay-toggle chrome/content/
+style chrome://global/content/customizeToolbar.xul chrome://autoplay-toggle/content/button.css
 
-locale webrtc-permissions-ui-toggle en-US chrome/locale/en-US/
-locale webrtc-permissions-ui-toggle fr-FR chrome/locale/fr-FR/
+locale autoplay-toggle en-US chrome/locale/en-US/
+locale autoplay-toggle fr-FR chrome/locale/fr-FR/
 
 # Firefox
-overlay	chrome://browser/content/browser.xul chrome://webrtc-permissions-ui-toggle/content/button.xul
+overlay	chrome://browser/content/browser.xul chrome://autoplay-toggle/content/button.xul
 
 # SeaMonkey
-overlay	chrome://navigator/content/navigator.xul chrome://webrtc-permissions-ui-toggle/content/button.xul
+overlay	chrome://navigator/content/navigator.xul chrome://autoplay-toggle/content/button.xul

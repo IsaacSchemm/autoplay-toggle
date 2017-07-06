@@ -2,20 +2,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-.webrtc-permissions-ui-button
+.autoplay-toggle-button
 {
-	list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAADJJREFUOE9jYBhM4D/QMcRirO7+v/L4UYIYasmoATiinmAAggJ5uAcipSlxMGUrEtwCAA3iK1xHw9NLAAAAAElFTkSuQmCC");
-	-moz-image-region: rect(0px 48px 48px 0px);
+	
 }
-.webrtc-permissions-ui-button.setting-true image {
-	list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABxElEQVQ4y5WTz0sbQRiGn9m1p+i2FUHQQ/AXu5sQaFHUg6ceCuKhtseCgXrIPyA0FHrqQVkP/QcUFb0qiCCiV1viIbmk6s6KilaLKFo0rQ1FN9vLbklsavSFgfmGd57hG95PcEP6W/2RELwE2v2lABkgjSLm5Yj8XuwXxYWR1HuBcaCB8joGEtJyFv4BGEl9GHgHUGNomBETUzMBsHM29qbND5kL7B+l5Qz9BRhJ/TmwrIaq6O7tJh6Oowq15GnXc5nZnyG1lMK9vAZ4IS1nQfg9rwONna+6SDQnuE1Te1N8ml0FOPYKRBUh6AMaQy3VDDa9oZIGwgPUGBpAvVDoV/yfpjXWSpV4UBGgChUzYgZluwJ0AES1KHdVRIuUAArcUx5esC0oQBpgI7dxZ4Cds4NtJkgZ21+2ufauKl52PRd7sxSwCHy93PnJ2O54RcD0/nQQqCNgXj39fPa7rqduHYifHJxwWHvI08dPUG4EKe/mmdybZG0uFRy9lpaTLY7yB+A9IEIt1bTF2og9jAGQvciyldkif/ArsI9Ky0mWG6ZnwAQQ/k8H34BBaTkrZafRh2hAnx+wDn+c00DG81h0Rp3zYv8fcTKSxJDSkdkAAAAASUVORK5CYII=");
+.autoplay-toggle-button.setting-true image {
+	
 }
 
-.webrtc-permissions-ui-button image {
+.autoplay-toggle-button image {
 	width: 24px;
 	height: 24px;
 }
-[iconsize="small"] .webrtc-permissions-ui-button image {
+[iconsize="small"] .autoplay-toggle-button image {
 	width: 16px;
 	height: 16px;
 }

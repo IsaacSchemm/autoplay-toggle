@@ -6,16 +6,16 @@
   <Description
     about="urn:mozilla:install-manifest"
 
-    em:name="WebRTC Permissions UI Toggle"
-    em:description="A toolbar button for SeaMonkey to override the missing WebRTC permissions dialog and allow media capture automatically."
+    em:name="Autoplay Toggle (Non-Restartless)"
+    em:description="Adds a toolbar button to toggle autoplay on and off."
     em:creator="Isaac Schemm"
 
-    em:id="webrtc-permissions-ui-toggle@lakora.us"
-    em:version="1.2.0"
-    em:homepageURL="https://github.com/IsaacSchemm/webrtc-permissions-ui-toggle"
+    em:id="autoplay-toggle@lakora.us"
+    em:version="1.0.0"
+    em:homepageURL="https://github.com/IsaacSchemm/autoplay-toggle"
 
-    em:iconURL="chrome://webrtc-permissions-ui-toggle/content/icon.png"
-	em:optionsURL="chrome://webrtc-permissions-ui-toggle/content/options.xul"
+    em:iconURL="chrome://autoplay-toggle/content/icon.png"
+	em:optionsURL="chrome://autoplay-toggle/content/options.xul"
 	em:optionsType="2" >
 
     <em:targetApplication>
@@ -26,6 +26,8 @@
 		<em:maxVersion>*</em:maxVersion>
 	  </Description>
 	</em:targetApplication>
+	
+	<!-- TODO: add Pale Moon -->
 
   </Description>
 

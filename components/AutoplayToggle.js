@@ -12,7 +12,7 @@ Components.utils.import("resource://gre/modules/Console.jsm");
 // override back on if the extension is going to be uninstalled or disabled.
 AddonManager.addAddonListener({
 	onUninstalling: function(addon) {
-		if (addon.id == "webrtc-permissions-ui-toggle@lakora.us") {
+		if (addon.id == "autoplay-toggle@lakora.us") {
 			Components.classes["@mozilla.org/preferences-service;1"]
 				.getService(Components.interfaces.nsIPrefService)
 				.getBranch("media.navigator.permission.")
@@ -20,7 +20,7 @@ AddonManager.addAddonListener({
 		}
 	},
 	onDisabling: function(addon) {
-		if (addon.id == "webrtc-permissions-ui-toggle@lakora.us") {
+		if (addon.id == "autoplay-toggle@lakora.us") {
 			Components.classes["@mozilla.org/preferences-service;1"]
 				.getService(Components.interfaces.nsIPrefService)
 				.getBranch("media.navigator.permission.")
@@ -34,14 +34,14 @@ class definition
 ***********************************************************/
 
 //class constructor
-function WebRTCToggle() { }
+function AutoplayToggle() { }
 
 // class definition
-WebRTCToggle.prototype = {
+AutoplayToggle.prototype = {
 
 	// properties required for XPCOM registration:
-	classDescription: "WebRTC Toggle (WebRTC Permissions UI Override)",
-	classID:		  Components.ID("{265ba61d-8b89-4739-acc6-24df0bf7eb70}"),
+	classDescription: "Autoplay Toggle (Non-Restartless)",
+	classID:		  Components.ID("{46836316-e11d-4142-b83b-c1e99755b6e2}"),
 	contractID:	   "@propfire/startup;1",
 	QueryInterface:   XPCOMUtils.generateQI([Components.interfaces.nsIObserver]),
 
@@ -53,7 +53,7 @@ WebRTCToggle.prototype = {
 	getString: s => {
 		var strings = Components.classes["@mozilla.org/intl/stringbundle;1"]
 			.getService(Components.interfaces.nsIStringBundleService)
-			.createBundle("chrome://webrtc-permissions-ui-toggle/locale/webrtc-permissions-ui-toggle.properties");
+			.createBundle("chrome://autoplay-toggle/locale/autoplay-toggle.properties");
 		try {
 			return strings.GetStringFromName(s);
 		} catch (e) {
@@ -89,7 +89,7 @@ WebRTCToggle.prototype = {
 			case "nsPref:changed":
 				var strings = Components.classes["@mozilla.org/intl/stringbundle;1"]
 					.getService(Components.interfaces.nsIStringBundleService)
-					.createBundle("chrome://webrtc-permissions-ui-toggle/locale/webrtc-permissions-ui-toggle.properties");
+					.createBundle("chrome://autoplay-toggle/locale/autoplay-toggle.properties");
 					
 				// Determine which message to show to the user.
 				var title = strings.GetStringFromName("title");
@@ -103,7 +103,7 @@ WebRTCToggle.prototype = {
 
 				var type = Components.classes["@mozilla.org/preferences-service;1"]
 					.getService(Components.interfaces.nsIPrefService)
-					.getBranch("extensions.webrtc-permissions-ui-toggle.")
+					.getBranch("extensions.autoplay-toggle.")
 					.getCharPref("notify-type");
 				switch (type) {
 					case "non-modal":
@@ -143,7 +143,7 @@ WebRTCToggle.prototype = {
 	}
 };
 
-var components = [WebRTCToggle];  
+var components = [AutoplayToggle];  
 if (XPCOMUtils.generateNSGetFactory)
 {
 	var NSGetFactory = XPCOMUtils.generateNSGetFactory(components);
