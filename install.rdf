@@ -19,15 +19,22 @@
 	em:optionsType="2" >
 
     <em:targetApplication>
-	  <!-- SeaMonkey -->
-	  <Description>
-		<em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
-		<em:minVersion>2.46</em:minVersion>
-		<em:maxVersion>*</em:maxVersion>
-	  </Description>
+	<!-- SeaMonkey -->
+		<Description>
+			<em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+			<em:minVersion>2.46</em:minVersion>
+			<em:maxVersion>*</em:maxVersion>
+		</Description>
 	</em:targetApplication>
 	
-	<!-- TODO: add Pale Moon -->
+	<!--  Pale Moon -->
+	<em:targetApplication>
+		<Description>
+			<em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
+			<em:minVersion>27.0</em:minVersion>
+			<em:maxVersion>27.*</em:maxVersion>
+		</Description>
+	</em:targetApplication>
 
   </Description>
 

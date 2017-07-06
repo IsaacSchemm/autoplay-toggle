@@ -4,7 +4,6 @@ XPCOM
 
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
-Components.utils.import("resource://gre/modules/Console.jsm");
 
 // When the user decides to disable or uninstall the add-on, reset the
 // autoplay setting immediately, instead of waiting for application shutdown.
@@ -14,18 +13,20 @@ Components.utils.import("resource://gre/modules/Console.jsm");
 AddonManager.addAddonListener({
 	onUninstalling: function(addon) {
 		if (addon.id == "autoplay-toggle@lakora.us") {
-			Components.classes["@mozilla.org/preferences-service;1"]
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"]
 				.getService(Components.interfaces.nsIPrefService)
 				.getBranch("media.autoplay.")
-				.setBoolPref("enabled", true);
+			prefs.setBoolPref("enabled", true);
+			prefs.setBoolPref("allowscripted", true);
 		}
 	},
 	onDisabling: function(addon) {
 		if (addon.id == "autoplay-toggle@lakora.us") {
-			Components.classes["@mozilla.org/preferences-service;1"]
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"]
 				.getService(Components.interfaces.nsIPrefService)
 				.getBranch("media.autoplay.")
-				.setBoolPref("enabled", true);
+			prefs.setBoolPref("enabled", true);
+			prefs.setBoolPref("allowscripted", true);
 		}
 	}
 });
@@ -58,7 +59,6 @@ AutoplayToggle.prototype = {
 		try {
 			return strings.GetStringFromName(s);
 		} catch (e) {
-			if ("console" in window) window.console.log(e);
 			return "?";
 		}
 	},
@@ -78,15 +78,6 @@ AutoplayToggle.prototype = {
 					.getBranch("media.autoplay.");
 				this.prefBranch.addObserver("", this, false);
 				break;
-			case "quit-application":
-				// Turn the override off when closing the application,
-				// regardless of whether or not the add-on is going to be
-				// uninstalled.
-				Components.classes["@mozilla.org/preferences-service;1"]
-					.getService(Components.interfaces.nsIPrefService)
-					.getBranch("media.autoplay.")
-					.setBoolPref("enabled", false);
-				break;
 			case "nsPref:changed":
 				var strings = Components.classes["@mozilla.org/intl/stringbundle;1"]
 					.getService(Components.interfaces.nsIStringBundleService)
@@ -100,7 +91,6 @@ AutoplayToggle.prototype = {
 					.getBoolPref(aData);
 				
 				var message = strings.GetStringFromName(newValue ? "turnedOn" : "turnedOff");
-				console.log(message);
 
 				var type = Components.classes["@mozilla.org/preferences-service;1"]
 					.getService(Components.interfaces.nsIPrefService)

@@ -63,8 +63,10 @@ AutoplayToggleButtons = {
 				var actualValue = prefs.getBoolPref("enabled");
 				if (actualValue) {
 					prefs.setBoolPref("enabled", false);
+					prefs.setBoolPref("allowscripted", false);
 				} else {
 					prefs.setBoolPref("enabled", true);
+					prefs.setBoolPref("allowscripted", true);
 				}
 			}
 		});
