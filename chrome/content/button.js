@@ -7,7 +7,7 @@ var observerObj = null;
 
 this.addEventListener("load", function () {
 	prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("media.autoplay.");
-	var toolbarbutton = document.getElementById("autoplay-toggle-ui-toggle-1");
+	var toolbarbutton = document.getElementById("autoplay-toggle-1");
 
 	observerObj = {
 		observe: function (aSubject, aTopic, aData) {
@@ -33,14 +33,6 @@ this.addEventListener("load", function () {
 		toolbarbutton.classList.add("setting-true");
 	} else {
 		toolbarbutton.label = toolbarbutton.tooltipText = AutoplayToggleButtons.GetString("labelOff");
-		
-		var r = Components.classes["@mozilla.org/preferences-service;1"]
-					.getService(Components.interfaces.nsIPrefService)
-					.getBranch("extensions.autoplay-toggle.")
-					.getBoolPref("reset-on-new-window");
-		if (r) {
-			prefs.setBoolPref("enabled", true);
-		}
 	}
 });
 this.addEventListener("unload", function () {
@@ -71,7 +63,7 @@ AutoplayToggleButtons = {
 				var actualValue = prefs.getBoolPref("enabled");
 				if (actualValue) {
 					prefs.setBoolPref("enabled", false);
-				} else if (promptService.confirm(this.window, title, AutoplayToggleButtons.GetString("confirmationPromptMessage"))) {
+				} else {
 					prefs.setBoolPref("enabled", true);
 				}
 			}

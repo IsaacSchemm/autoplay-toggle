@@ -2,4 +2,3 @@
 <!ENTITY notifyType.nonModal.label "Standard notification">
 <!ENTITY notifyType.alert.label    "Modal dialog">
 <!ENTITY notifyType.none.label     "None">
-<!ENTITY resetOnNewWindow.label    "Reset when opening a new browser window">

@@ -6,17 +6,18 @@ Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Console.jsm");
 
-// When the user decides to disable or uninstall the add-on, turn the override
-// off immediately, instead of waiting for application shutdown. In button.js
-// we check the status of the add-on, and prevent the user from turning the
-// override back on if the extension is going to be uninstalled or disabled.
+// When the user decides to disable or uninstall the add-on, reset the
+// autoplay setting immediately, instead of waiting for application shutdown.
+// In button.js we check the status of the add-on, and prevent the user from
+// turning the override back on if the extension is going to be uninstalled or
+// disabled.
 AddonManager.addAddonListener({
 	onUninstalling: function(addon) {
 		if (addon.id == "autoplay-toggle@lakora.us") {
 			Components.classes["@mozilla.org/preferences-service;1"]
 				.getService(Components.interfaces.nsIPrefService)
 				.getBranch("media.autoplay.")
-				.setBoolPref("enabled", false);
+				.setBoolPref("enabled", true);
 		}
 	},
 	onDisabling: function(addon) {
@@ -24,7 +25,7 @@ AddonManager.addAddonListener({
 			Components.classes["@mozilla.org/preferences-service;1"]
 				.getService(Components.interfaces.nsIPrefService)
 				.getBranch("media.autoplay.")
-				.setBoolPref("enabled", false);
+				.setBoolPref("enabled", true);
 		}
 	}
 });

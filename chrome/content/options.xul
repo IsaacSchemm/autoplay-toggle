@@ -9,5 +9,4 @@
     <radio value="none" label="&notifyType.none.label;"/>
   </radiogroup>
 </setting>
-<setting pref="extensions.autoplay-toggle.reset-on-new-window" type="bool" title="&resetOnNewWindow.label;"/>
 </vbox>
