@@ -13,6 +13,9 @@ this.addEventListener("load", function () {
 		observe: function (aSubject, aTopic, aData) {
 			if ("nsPref:changed" == aTopic) {
 				var newValue = aSubject.getBoolPref(aData);
+				
+				var toolbarbutton = document.getElementById("autoplay-toggle-1");
+				if (!toolbarbutton) return;
 
 				if (newValue) {
 					toolbarbutton.label = toolbarbutton.tooltipText = AutoplayToggleButtons.GetString("labelOn");
