@@ -1,0 +1,4 @@
+<!ENTITY notifyType.label          "Type of notification when toggled">
+<!ENTITY notifyType.nonModal.label "Standard notification">
+<!ENTITY notifyType.alert.label    "Modal dialog">
+<!ENTITY notifyType.none.label     "None">

@@ -6,6 +6,7 @@ content autoplay-toggle chrome/content/
 style chrome://global/content/customizeToolbar.xul chrome://autoplay-toggle/content/button.css
 
 locale autoplay-toggle en-US chrome/locale/en-US/
+locale autoplay-toggle ja-JP chrome/locale/ja-JP/
 
 # Firefox
 overlay	chrome://browser/content/browser.xul chrome://autoplay-toggle/content/button.xul
