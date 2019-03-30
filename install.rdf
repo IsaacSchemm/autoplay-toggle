@@ -35,6 +35,14 @@
 			<em:maxVersion>27.*</em:maxVersion>
 		</Description>
 	</em:targetApplication>
+	
+	<em:localized>
+      <Description>
+        <em:locale>ja-JP</em:locale>
+        <em:name>Autoplay Toggle（再起動なし）</em:name>
+        <em:description>自動再生のオンとオフを切り替えるツールバーボタンを追加します。</em:description>
+      </Description>
+    </em:localized>
 
   </Description>
 
