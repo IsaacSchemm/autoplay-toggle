@@ -1,4 +1,4 @@
-<!ENTITY notifyType.label          "Type of notification when toggled">
-<!ENTITY notifyType.nonModal.label "Standard notification">
-<!ENTITY notifyType.alert.label    "Modal dialog">
-<!ENTITY notifyType.none.label     "None">
+<!ENTITY notifyType.label          "切り替え時の通知の種類">
+<!ENTITY notifyType.nonModal.label "標準の通知">
+<!ENTITY notifyType.alert.label    "モーダルダイアログ（Modal dialog）">
+<!ENTITY notifyType.none.label     "通知なし">

@@ -11,7 +11,7 @@
     em:creator="Isaac Schemm"
 
     em:id="autoplay-toggle@lakora.us"
-    em:version="1.0.1"
+    em:version="1.0.2"
     em:homepageURL="https://github.com/IsaacSchemm/autoplay-toggle"
 
     em:iconURL="chrome://autoplay-toggle/content/icon.png"
